@@ -1,2 +1,2 @@
 # alx-system_engineering-devops
-Shell basics
+This is a repository created to practice how to write bash script

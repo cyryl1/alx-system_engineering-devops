@@ -1,2 +1,2 @@
 #!/bin/bash
-echo BINARY=$((2#101010))
+echo $((2#101010))

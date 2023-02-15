@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Environment variables: $(printenv | tr '\n' ' ')"
+echo $(env | tr '\n' ' ')

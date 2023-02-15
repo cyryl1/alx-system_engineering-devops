@@ -1,2 +1,2 @@
 #!/bin/bash
-compgen -A variable && compgen -A export && compgen -A function
+compgen -v; compgen -e; compgen -A function

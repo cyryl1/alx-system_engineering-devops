@@ -1,2 +1,2 @@
 #!/bin/bash
-printf '%s ' $(env | cut -d= -f1)
+printenv

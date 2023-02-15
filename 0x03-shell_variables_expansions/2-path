@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir ~/action
+echo 'export PATH="$PATH:/action"' >> ~/.bashrc

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#Print Clock
+
+hour=0
+minute=1
+
+while [ $hour -le 12 ]; do
+	printf "Hour: %2d\n" $hour
+	while [ $minute -le 59 ]; do
+		printf "%2d\n" $minute
+		((minute++))
+	done
+
+	minute=0
+	((hour++))
+done

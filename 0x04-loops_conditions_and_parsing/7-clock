@@ -11,6 +11,6 @@ while [ $hour -le 12 ]; do
 		((minute++))
 	done
 
-	minute=0
+	minute=1
 	((hour++))
 done

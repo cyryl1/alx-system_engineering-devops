@@ -2,15 +2,13 @@
 #Print Clock
 
 hour=0
-minute=1
 
 while [ $hour -le 12 ]; do
-	printf "Hour: %2d\n" $hour
+	echo "Hour: "$hour""
+	minute=1
 	while [ $minute -le 59 ]; do
-		printf "%2d\n" $minute
+		echo "$minute"
 		((minute++))
 	done
-
-	minute=1
 	((hour++))
 done

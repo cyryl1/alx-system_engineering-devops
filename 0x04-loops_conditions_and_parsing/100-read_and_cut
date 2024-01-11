@@ -6,7 +6,7 @@ file="/etc/passwd"
 # Check if the file exists
 if [ -e "$file" ]; then
 	# Read the file line by line
-	while IFS=: read -r username x uid gid home shell; do
+	while IFS=: read -r username uid home; do
 		# Display username, user ID, and home directory path
 		echo "$username:$uid:$home"
 	done < "$file"

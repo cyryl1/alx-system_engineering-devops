@@ -1,0 +1,6 @@
+#!/usr/bin env
+# to configure ssh
+
+Host *
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/school

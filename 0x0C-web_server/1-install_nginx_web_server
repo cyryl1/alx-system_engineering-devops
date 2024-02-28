@@ -2,67 +2,18 @@
 # Installs Nginx with the following congigurations
 # - Listens on port 80
 
-#apt-get update
-#apt-get install -y nginx
+apt-get update
+apt-get install -y nginx
 
-#mkdir /etc/nginx/html
-#touch /etc/nginx/html/index.html
-#echo "Hello World!" > /etc/nginx/html/index.html
-#printf %s "server {
-#     listen      80 default_server;
-#     listen      [::]:80 default_server;
-#     root        /etc/nginx/html;
-#     index       index.html index.htm;
-#}
-#" > /etc/nginx/sites-available/default
-
-#service nginx restart
-
-
-# Install Nginx
-sudo apt update
-sudo apt install -y nginx
-
-# Start Nginx
-sudo systemctl start nginx
-
-# Disable default Nginx configuration
-sudo systemctl disable --now nginx.service
-
-# Create a new Nginx configuration file
-sudo touch /etc/nginx/sites-available/default
-
-# Set the permissions of the new configuration file
-sudo chmod 644 /etc/nginx/sites-available/default
-
-# Add the following configuration to the new file
-cat <<EOT > /etc/nginx/sites-available/default
-
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    location ~ /.ht {
-        deny all;
-    }
-
-    # Add the following line to return Hello World! for the root path
-    location = / {
-        return 200 'Hello World!';
-    }
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
 }
+" > /etc/nginx/sites-available/default
 
-EOT
-
-# Test the new configuration
-sudo nginx -t
-
-# Restart Nginx
-sudo systemctl restart nginx
+service nginx restart

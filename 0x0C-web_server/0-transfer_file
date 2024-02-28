@@ -1,29 +1,9 @@
 #!/usr/bin/env bash
 # transfers a file from our client to a server
 
-if [ "$#" -lt 3 ]; then
+if [ "$#" -lt 3 ];
+then
 	echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-	exit 1
-fi
-
-FILE_PATH="$1"
-SERVER_IP="$2"
-USERNAME="$3"
-SSH_KEY_PATH="$4"
-
-if [ ! -f ~/.ssh/known_hosts ]; then
-	touch ~/.ssh/known_hosts
-fi
-
-sed -i "$SERVER_IP h\
-	$SERVER_IP d" ~/.ssh/known/hosts
-
-ssh-keyscan -t rsa "$SERVER_IP" >> ~/.ssh/known_hosts
-
-scp -i "SSH_KEY_PATH" -o StrictHostKeyChecking=no "$FILE_PATH" "$USERNAME@$SERVER_IP:~/"
-
-if [ $? -eq 0 ]; then
-	echo "File transfer successful."
 else
-	echo "File transfer failed."
+	scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2":~
 fi

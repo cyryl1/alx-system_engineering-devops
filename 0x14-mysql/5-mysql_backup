@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# This bash scripts that backs up th databse on this webserver
+
+# Check if the scripts recieved exactly one argument
+if [ "$#" -ne 1 ]; then
+       echo "Usage: $0 <password>"
+       exit 1
+fi
+
+# Assign the argument to a variable
+PASSWORD=$1
+
+# Defin the backup file and archive names
+BACKUP_FILE="backup.sql"
+DATE=$(date +'%d-%m-%Y')
+ARCHIVE_FILE="${DATE}.tar.gz"
+
+# Generate the MySQL dump
+mysqldump -u root -p"$PASSWORD" --all-databases > "$BACKUP_FILE"
+
+# Check if the mysqldump command succeded
+if [ $? -ne 0 ]; then
+        echo "Error: mysqldump failed"
+        exit 1
+fi
+
+# Create a compressed tar.gz archive of the dump file
+tar -czvf "$ARCHIVE_FILE" "$BACKUP_FILE"
+
+# Check if th tar command succeeded
+if [ $? -ne 0 ]; then
+        echo "Error: Failed to create archive"
+        exit 1
+fi
+
+# Remove the original dump file to clean up
+#rm "$BACKUP_FILE"
+
+echo "Backup successful: $ARCHIVE_FILE"
+~                                        

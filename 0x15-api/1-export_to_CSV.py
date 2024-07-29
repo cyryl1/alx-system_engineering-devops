@@ -32,7 +32,7 @@ def main():
 
     username = user.get('username')
 
-    with open('USER_ID.csv', 'w', newline='') as file:
+    with open('{}.csv'.format(id), 'w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for task in tasks:
             writer.writerow([

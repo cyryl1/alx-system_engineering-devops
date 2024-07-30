@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""
+"""
 A Script to fetch and display completed tasks for a user
 from a REST API
 """
@@ -10,17 +10,18 @@ import sys
 
 
 def main():
-    """Fetch an display complted tasks for a user."""
+    """Fetch and display completed tasks for a user."""
     if len(sys.argv) != 2:
         print("Usage: python3 <name_of_file.py> <employee_id>")
         return
 
-    id = sys.argv[1]
+    user_id = sys.argv[1]
     response1 = requests.get(
-            'https://jsonplaceholder.typicode.com/users/{}'.format(id)
+            'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
     )
     response2 = requests.get(
-            'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id)
+            'https://jsonplaceholder.typicode.com/todos?userId={}'
+            .format(user_id)
     )
 
     if response1.status_code != 200 or response2.status_code != 200:
@@ -32,11 +33,11 @@ def main():
 
     username = user.get('username')
 
-    with open('{}.csv'.format(id), 'w', newline='') as file:
+    with open(f'{user_id}.csv', 'w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for task in tasks:
             writer.writerow([
-                id,
+                user_id,
                 username,
                 task.get('completed'),
                 task.get('title')

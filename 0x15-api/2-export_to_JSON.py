@@ -1,4 +1,4 @@
-#!/usr/bin/pyton3
+#!/usr/bin/python3
 """
 A Script to fetch and export tasks for a user
 from a REST API in JSON format

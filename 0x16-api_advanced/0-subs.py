@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
     """
     Returns total number of ubscribers in a subreddit
     """
-    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
 
     headers = {'User-Agent': 'Custom User-Agent for Subscriber Count'}
 

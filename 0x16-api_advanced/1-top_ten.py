@@ -10,7 +10,7 @@ def top_ten(subreddit):
     """
     Prints title  for first ten hot posts
     """
-    url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=10'
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
 
     headers = {'User-Agent': 'Custom User-Agent for Top Ten Posts'}
 

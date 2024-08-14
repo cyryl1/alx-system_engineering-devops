@@ -5,6 +5,7 @@ A reddit app
 
 import requests
 
+
 def top_ten(subreddit):
     """
     Prints title  for first ten hot posts
